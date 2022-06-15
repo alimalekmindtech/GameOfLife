@@ -40,3 +40,6 @@ class GoL:
             self.grid[idx[0], idx[1]] = 1
         else:
             self.grid[idx[0], idx[1]] = 0
+
+    def get_nn_number(self, array_idx):
+        return len(self.get_nn_idx_set(array_idx))
