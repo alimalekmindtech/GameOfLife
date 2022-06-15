@@ -33,3 +33,10 @@ class GoL:
         result.remove((idx_row, idx_col))
 
         return result
+
+    def action(self, idx):
+        prev_val = self.grid[idx[0], idx[1]]
+        if prev_val == 0:
+            self.grid[idx[0], idx[1]] = 1
+        else:
+            self.grid[idx[0], idx[1]] = 0
