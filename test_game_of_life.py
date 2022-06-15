@@ -22,3 +22,14 @@ class TestGoL:
     ])
     def test_NN_idx(self, array_idx, nn_idx_set):
         assert self.gol.get_nn_idx_set(array_idx)==nn_idx_set
+
+    @pytest.mark.parametrize("idx", [(88,78), (56,67)])
+    def test_action(self, idx):
+        prev_val = self.gol.grid[idx[0], idx[1]]
+        self.gol.action(idx)
+        curr_val = self.gol.grid[idx[0], idx[1]]
+        if prev_val == 0:
+            assert curr_val == 1
+
+        elif prev_val == 1:
+            assert curr_val == 0
