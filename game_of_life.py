@@ -27,7 +27,7 @@ class GoL:
         result = set()
         for i_row in idx_nn_row:
             for i_col in idx_nn_col:
-                if i_row and i_col:
+                if i_row!=None and i_col!=None:
                     result.add((i_row, i_col))
         
         result.remove((idx_row, idx_col))
@@ -43,3 +43,17 @@ class GoL:
 
     def get_nn_number(self, array_idx):
         return len(self.get_nn_idx_set(array_idx))
+
+    def get_nn_number_live(self, array_idx):
+        nn_idx_set = self.get_nn_idx_set(array_idx)
+        result = 0
+        for nn_idx in nn_idx_set:
+            stat = self.grid[nn_idx[0], nn_idx[1]]
+            if stat == 1:
+                result+=1
+        return result
+
+if __name__ == "__main__":
+    gol = GoL()
+    nn_idx_set = gol.get_nn_idx_set((0,1))
+

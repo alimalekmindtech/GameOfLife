@@ -18,6 +18,7 @@ class TestGoL:
     @pytest.mark.parametrize("array_idx, nn_idx_set", [
         ((2,2), {(1, 3), (2, 3), (3, 3), (1, 2), (3, 2), (1, 1), (2, 1), (3, 1)}),
         ((99, 99), {(98, 98), (98, 99), (99, 98)}),
+        ((0, 1), {(0, 0), (1, 1), (1, 0), (0, 2), (1, 2)})
         
     ])
     def test_NN_idx(self, array_idx, nn_idx_set):
@@ -39,7 +40,7 @@ class TestGoL:
         nn_num = self.gol.get_nn_number(array_idx)
         assert nn_num == len_nn
     
-    @pytest.mark.parametrize('array_idx, len_nn_live', [((0,1),1), ((99,97), 2)])
+    @pytest.mark.parametrize('array_idx, len_nn_live', [((0,1),1), ((98,98), 2)])
     def test_nn_live_number(self, array_idx, len_nn_live):
         self.gol.action((0,0))
         self.gol.action((99,99))
