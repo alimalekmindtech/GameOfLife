@@ -11,9 +11,13 @@ import numpy as np
 #     assert isinstance(foo(a, b), tuple)
 
 class TestGoL:
-    
+    def setup_method(self):
+        self.gol = GoL()
 
+    def test_SizeofGrid(self):
+        size = self.gol.grid.shape
+        assert size == (100, 100)
 
-    def test_GridInstance(self):
-        gol = GoL()
-        assert isinstance(gol.grid, np.ndarray)
+    def test_GridMembers(self):
+        grid_elements =set(np.unique(self.gol.grid))
+        assert grid_elements.issubset({0,1})
