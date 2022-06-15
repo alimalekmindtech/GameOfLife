@@ -33,3 +33,8 @@ class TestGoL:
 
         elif prev_val == 1:
             assert curr_val == 0
+
+    @pytest.mark.parametrize("array_idx, len_nn ", [((2,2), 8), ((99,99), 3)])
+    def test_nn_number(self, array_idx, len_nn):
+        nn_num = self.gol.get_nn_number(array_idx)
+        assert nn_num == len_nn
